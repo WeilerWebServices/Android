@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="info.guardianproject.gpg"
+    android:versionCode="3020"
+    android:versionName="0.3.2" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19"
+        android:maxSdkVersion="20" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="jackpal.androidterm.permission.APPEND_TO_PATH" />
+
+    <permission
+        android:name="info.guardianproject.gpg.permission.READ_KEY_DETAILS"
+        android:description="@string/perm_read_key_details_description"
+        android:label="@string/perm_read_key_details_label"
+        android:protectionLevel="dangerous" />
+
+    <application
+        android:name=".GpgApplication"
+        android:allowBackup="false"
+        android:description="@string/app_description"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat" >
+        <activity android:name=".CreateKeyActivity" />
+        <activity
+            android:name=".DebugLogActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".FirstRunSetupActivity" />
+        <activity android:name=".GpgPreferenceActivity" />
+        <activity
+            android:name=".DecryptActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/title_decrypt_file"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".EncryptFileActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/title_encrypt_file"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SignFileActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/title_sign_file"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".FirstRunWelcomeActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".InstallActivity"
+            android:label="@string/dialog_installing_msg"
+            android:noHistory="true" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ReceiveKeyActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/title_receive_keys"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
+                <data android:scheme="openpgp4fpr" />
+                <data android:scheme="OPENPGP4FPR" />
+                <data android:scheme="OpenPGP4FPR" />
+                <data android:scheme="OpenPGP4Fpr" />
+                <data android:scheme="OpenPGP4fpr" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".pinentry.PinEntryActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:finishOnTaskLaunch="true"
+            android:label="@string/title_activity_pinentry"
+            android:launchMode="singleInstance"
+            android:noHistory="true"
+            android:theme="@style/DialogTheme" >
+            <intent-filter>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FileHandlerActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:parentActivityName=".MainActivity" >
+            <intent-filter>
+                <data android:mimeType="@string/pgp_encrypted" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!-- we want all application/* but application/pgp-*, that's handled elsewhere -->
+                <data android:mimeType="application/a*" />
+                <data android:mimeType="application/b*" />
+                <data android:mimeType="application/c*" />
+                <data android:mimeType="application/d*" />
+                <data android:mimeType="application/e*" />
+                <data android:mimeType="application/f*" />
+                <data android:mimeType="application/g*" />
+                <data android:mimeType="application/h*" />
+                <data android:mimeType="application/i*" />
+                <data android:mimeType="application/j*" />
+                <data android:mimeType="application/k*" />
+                <data android:mimeType="application/l*" />
+                <data android:mimeType="application/m*" />
+                <data android:mimeType="application/n*" />
+                <data android:mimeType="application/o*" />
+                <!-- no application/p* ! see note above -->
+                <data android:mimeType="application/q*" />
+                <data android:mimeType="application/r*" />
+                <data android:mimeType="application/s*" />
+                <data android:mimeType="application/t*" />
+                <data android:mimeType="application/u*" />
+                <data android:mimeType="application/v*" />
+                <data android:mimeType="application/w*" />
+                <data android:mimeType="application/x*" />
+                <data android:mimeType="application/y*" />
+                <data android:mimeType="application/z*" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="media/*" />
+                <data android:mimeType="text/*" />
+                <data android:mimeType="video/*" />
+                <data android:mimeType="x*/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SENDTO" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="*/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="*" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+
+                <!-- GnuPG ASCII data, mostly keys, but sometimes signatures and encrypted data -->
+                <data android:pathPattern=".*\\.asc" />
+                <data android:pathPattern=".*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.asc" />
+                <!-- GnuPG binary encrypted/signed data, binary format -->
+                <data android:pathPattern=".*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpg" />
+                <!-- PGP encrypted data, binary format -->
+                <data android:pathPattern=".*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pgp" />
+                <!-- on some mail clients, PGP attachments show up as *.bin -->
+                <data android:pathPattern=".*\\.bin" />
+                <data android:pathPattern=".*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.bin" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="*" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <!--
+                The ultimate in crack smoking!  Some apps will only respect these file associations
+                if the mimeType is not set, and other apps will only respect them if mimeType is set
+                to */*.  Therefore we have two whole copies of the same thing, besides setting the mimeType. 
+                -->
+                <data android:mimeType="*/*" />
+
+                <!-- GnuPG ASCII data, mostly keys, but sometimes signatures and encrypted data -->
+                <data android:pathPattern=".*\\.asc" />
+                <data android:pathPattern=".*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.asc" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.asc" />
+                <!-- GnuPG binary encrypted/signed data, binary format -->
+                <data android:pathPattern=".*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpg" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpg" />
+                <!-- PGP encrypted data, binary format -->
+                <data android:pathPattern=".*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pgp" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pgp" />
+                <!-- on some mail clients, PGP attachments show up as *.bin -->
+                <data android:pathPattern=".*\\.bin" />
+                <data android:pathPattern=".*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.bin" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.bin" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VerifyActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/verify_signature"
+            android:noHistory="true" >
+            <intent-filter>
+                <data android:mimeType="@string/pgp_signature" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="*" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+
+                <!-- GnuPG signatures, binary format -->
+                <data android:pathPattern=".*\\.sig" />
+                <data android:pathPattern=".*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.sig" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="*" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <!--
+                The ultimate in crack smoking!  Some apps will only respect these file associations
+                if the mimeType is not set, and other apps will only respect them if mimeType is set
+                to */*.  Therefore we have two whole copies of the same thing, besides setting the mimeType. 
+                -->
+                <data android:mimeType="*/*" />
+
+                <!-- GnuPG signatures, binary format -->
+                <data android:pathPattern=".*\\.sig" />
+                <data android:pathPattern=".*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.sig" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.sig" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ImportFileActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/title_import_keys"
+            android:parentActivityName=".MainActivity" >
+            <intent-filter>
+                <data android:mimeType="@string/pgp_keys" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="*" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+
+                <!-- PGP Public KeyRing -->
+                <data android:pathPattern=".*\\.key" />
+                <data android:pathPattern=".*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.key" />
+                <!-- PGP Public KeyRing, text format -->
+                <data android:pathPattern=".*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pkr" />
+                <!-- PGP Secret KeyRing, text format -->
+                <data android:pathPattern=".*\\.skr" />
+                <data android:pathPattern=".*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.skr" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="*" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <!--
+                The ultimate in crack smoking!  Some apps will only respect these file associations
+                if the mimeType is not set, and other apps will only respect them if mimeType is set
+                to */*.  Therefore we have two whole copies of the same thing, besides setting the mimeType. 
+                -->
+                <data android:mimeType="*/*" />
+
+                <!-- PGP Public KeyRing -->
+                <data android:pathPattern=".*\\.key" />
+                <data android:pathPattern=".*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.key" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.key" />
+                <!-- PGP Public KeyRing, text format -->
+                <data android:pathPattern=".*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pkr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.pkr" />
+                <!-- PGP Secret KeyRing, text format -->
+                <data android:pathPattern=".*\\.skr" />
+                <data android:pathPattern=".*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.skr" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.skr" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".apg_compat.EncryptActivity"
+            android:label="@string/title_activity_encrypt"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="org.thialfihar.android.apg.intent.ENCRYPT_AND_RETURN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".apg_compat.DecryptActivity"
+            android:label="@string/title_activity_decrypt"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="org.thialfihar.android.apg.intent.DECRYPT_AND_RETURN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SelectKeysActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard"
+            android:label="@string/title_select_recipients"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="org.thialfihar.android.apg.intent.SELECT_PUBLIC_KEYS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.thialfihar.android.apg.intent.SELECT_SECRET_KEY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable_public_keys" />
+        </activity>
+        <activity
+            android:name=".sync.ContactIntentRouter"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <data android:mimeType="vnd.android.cursor.item/vnd.info.guardianproject.gpg.encryptfileto" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name=".KeyDataProvider"
+            android:authorities="info.guardianproject.gpg"
+            android:exported="true"
+            android:readPermission="info.guardianproject.gpg.permission.READ_KEY_DETAILS" />
+        <provider
+            android:name=".PrivateFilesProvider"
+            android:authorities="info.guardianproject.gpg.PrivateFilesProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <grant-uri-permission android:pathPrefix="/" />
+        </provider>
+
+        <service
+            android:name=".GpgAgentService"
+            android:process=":gpgagent" />
+        <service
+            android:name=".SharedDaemonsService"
+            android:process=":shareddaemons" />
+        <!-- The authenticator service -->
+        <service
+            android:name=".sync.AuthenticationService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+        <service
+            android:name=".sync.SyncService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+            <meta-data
+                android:name="android.provider.CONTACTS_STRUCTURE"
+                android:resource="@xml/contacts" />
+        </service>
+
+        <receiver android:name=".GpgBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="jackpal.androidterm.broadcast.APPEND_TO_PATH" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

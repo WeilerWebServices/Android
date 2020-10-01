@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone="no"?>
+<resources>
+    <string name="app_name">GnuPrivacyGuard</string>
+    <string name="app_description">GnuPrivacyGuard (GPG) brings GnuPG, the most trusted name in encryption, to Android. Easily encrypt, decrypt, sign and verify files of any kind, just by sharing them to GPG. This app aims to provide a complete, integrated crypto toolkit integrated into the Android experience. GPG provides solid encryption for private files, and for verifying that files are from who you think they are. It includes optimizations to make it operate many times faster than other encryption packages. GPG provides an integrated experience, so clicking on OpenPGP files \"just works\". You can also share files to GPG to decrypt, encrypt, sign, or verify them. GPG will respond when you click on a OpenPGP fingerprint URL (one that starts with openpgp4fpr:). GPG also gives you complete command line access to the entire GnuPG suite of encryption software. We are working on Android integration for all of GnuPG\'s crypto services, including OpenPGP, symmetric encryption, and more.</string>
+    <string name="label_debug_header">Debug log for tests</string>
+    <string name="pinentry_service_label">Gnu Privacy Guard pinentry daemon</string>
+    <string name="pinentry_service_started">Gnu Privacy Guard pinentry daemon running</string>
+    <string name="enter_pin">Enter your PIN</string>
+    <string name="title_activity_pinentry">PIN Entry</string>
+    <string name="title_activity_encrypt">Encrypt</string>
+    <string name="title_activity_decrypt">Decrypt</string>
+    <string name="dialog_installing_msg">Setting up Gnu Privacy Guard</string>
+    <string name="dialog_installing_title">Installing… (wait for it to finish!)</string>
+    <string name="pref_keyserver_title">Keyserver</string>
+    <string name="pref_keyserver_summary">Which HKP keyserver to download from and publish keys to (default: ipv4.pool.sks-keyservers.net)</string>
+    <string name="pref_start_boot_title">Start Daemons on Boot</string>
+    <string name="pref_start_boot_summary">Starts the pinentry and dirmngr daemons when your device boots</string>
+    <string name="title_decrypt_file">Decrypt File</string>
+    <string name="title_about">About</string>
+    <string name="title_debug_mode">Debug Mode</string>
+    <string name="title_encrypt_file">Encrypt File</string>
+    <string name="title_sign_file">Sign File</string>
+    <string name="title_import_keys">Import Keys</string>
+    <string name="title_export_keys">Export Keys</string>
+    <string name="title_receive_keys">Receive Keys</string>
+    <string name="title_public_keys">Public Keys</string>
+    <string name="title_secret_keys">Secret Keys</string>
+    <string name="title_find_keys">Find Keys</string>
+    <string name="title_change_passphrase">Change Passphrase</string>
+    <string name="title_error">Error</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_select_keys">Select Key</string>
+    <string name="verify_signature">Verify Signature</string>
+    <string name="signature_verified">Signature Verified</string>
+    <string name="verifying_file_format">Verifying \"%s\"</string>
+    <string name="decrypting_file_format">Decrypting \"%s\"…</string>
+    <string name="error_no_file_manager_installed">No compatible file manager app installed!</string>
+    <string name="error_files_not_supported">File URIs are not supported via this Intent!</string>
+    <string name="dialog_specify_decrypt_file">Choose the file to decrypt:</string>
+    <string name="dialog_specify_file_to_decrypt_to">Choose the file to save the decrypted data to:</string>
+    <string name="dialog_decrypt_succeeded_view_file_format">\"%s\" decrypted and verified properly, view the file?</string>
+    <string name="dialog_specify_encrypt_file">Choose the file to encrypt:</string>
+    <string name="dialog_specify_sign_file">Choose the file to sign:</string>
+    <string name="dialog_specify_import_file_msg">Choose the file to import:</string>
+    <string name="dialog_specify_export_file_msg">All keys will be exported to the file that you specify below. WARNING! File will be overwritten if it exists.</string>
+    <string name="dialog_verify_succeeded_view_file_format">\"%s\" verified properly, view the file?</string>
+    <string name="dialog_specific_keys_to_receive">Specify the key IDs or fingerprints of the keys you want to receive from the keyservers:</string>
+    <string name="key_already_exists_format">%s key already exists in your keyring:</string>
+    <string name="label_delete_after_import">Delete after import</string>
+    <string name="label_export_secret_keys">Export secret keys only</string>
+    <string name="renamed_existing_file_format">Renamed existing file to %s!</string>
+    <string name="dialog_encrypting_title">Encrypting…</string>
+    <string name="no_key_specified_using_this_key">No one was specified as the recipient, so using the default:</string>
+    <string name="sign_file">Sign file?</string>
+    <string name="ascii_signature">ASCII signature?</string>
+    <string name="sign">Sign…</string>
+    <string name="encrypt">Encrypt…</string>
+    <string name="changing_passphrase_for_format">Changing passphrase for %s</string>
+    <string name="search_hint">search by name, email, or key ID</string>
+
+    <!-- first run wizard -->
+    <string name="wizard_welcome_title">Welcome to Gnu Privacy Guard</string>
+    <string name="wizard_welcome_subtitle">The Beta Version of GnuPG for Android</string>
+    <string name="wizard_warning">WARNING! Make and keep backups of all your keys. This application still under heavy development.</string>
+    <string name="wizard_button_backups">I will keep backups</string>
+    <string name="wizard_integration_msg">Gnu Privacy Guard can sync your keyring with your Contacts for tighter integration. These changes are not permanent and are easily undone.</string>
+    <string name="wizard_integration_checkbox_label">Integrate Keyring with Contacts</string>
+    <string name="wizard_button_create_key">Create Key</string>
+    <string name="wizard_button_import_keys">Import Keys</string>
+    <string name="wizard_button_skip">Skip</string>
+
+    <!-- account, contacts, and contact syncing -->
+    <string name="account_label">Gnu Privacy Guard</string>
+    <string name="keyring_group_name">Gnu Privacy Guard Keyring</string>
+    <string name="secret_key_group_name">OpenPGP Secret Keys</string>
+    <string name="send_to_keyserver">Send to keyserver</string>
+    <string name="refresh_from_keyserver">Refresh from keyserver</string>
+    <string name="delete_keys">Delete Keys</string>
+    <string name="encrypt_file_to">Encrypt file to…</string>
+    <string name="encrypt_file_to_detail">Choose a file to encrypt to this person.</string>
+    <string name="contact_view_key">View key</string>
+    <string name="title_create_key">Create Key</string>
+    <string name="list_keys">List Keys</string>
+    <string name="key_name_label">Name:</string>
+    <string name="key_email_label">Email:</string>
+    <string name="key_comment_label">Comment:</string>
+    <string name="key_type_label">Key type:</string>
+    <string name="key_size_label">Bits:</string>
+    <string name="key_expire_label">Expiration:</string>
+    <string name="key_expire_one_month">1 Month</string>
+    <string name="key_expire_one_year">1 Year</string>
+    <string name="key_expire_two_years">2 Years</string>
+    <string name="key_expire_five_years">5 Years</string>
+    <string name="key_expire_ten_years">10 Years</string>
+    <string name="key_expire_never">Never</string>
+    <string name="key_revoke_gen">Generate Revokation Certificate</string>
+    <string name="key_add_comment">Show optional comment field</string>
+    <string name="key_upload">Upload To Keyservers</string>
+    <string name="key_make_backup">Backup To SD Card</string>
+    <string name="dialog_generating_new_key_title">Generating new key…</string>
+    <string name="generating_new_key_message">This process can currently take up to 15 minutes.</string>
+    <string name="generating_revoke_cert">Generating revokation certificate…</string>
+    <string name="uploading_to_keyserver">Uploading to keyserver…</string>
+    <string name="backing_up_to_sdcard">Backing up new key to SD Card…</string>
+    <string name="dialog_share_encrypted_file_using">Share encrypted file using:</string>
+    <string name="dialog_share_signature_file_using">Share signature file using:</string>
+    <string name="dialog_share_debug_log_using">Share debug log using:</string>
+    <string name="dialog_view_file_using">View file using:</string>
+    <string name="openpgp_operation">OpenPGP Operation</string>
+    <string name="dialog_encrypt_or_sign_file_format">Encrypt and/or sign \"%s\"?</string>
+
+    <!-- sending and receiving dialogs -->
+    <string name="receive_key">Receive key…</string>
+    <string name="receive_key_message">Specify the key ID to receive from the keyserver:</string>
+    <string name="send_key">Send key…</string>
+    <string name="send_key_message">Specify the key ID to send to the keyserver:</string>
+
+    <!-- error messages -->
+    <string name="error_cannot_read_incoming_file_format">Cannot read incoming file \"%s\"!</string>
+    <string name="error_cannot_detect_file_type_format">Cannot detect what kind of file \"%s\" is!</string>
+    <string name="error_output_file_exists_skipping_format">Output file \"%s\" exists, skipping decryption.</string>
+    <string name="error_decrypting_file_failed_format">Decrypting \"%s\" failed!</string>
+    <string name="error_encrypting_file_failed_format">Encrypting \"%s\" failed!</string>
+    <string name="error_signing_file_failed_format">Signing \"%s\" failed!</string>
+    <string name="error_decrypting_failed">Decrypting failed!</string>
+    <string name="error_encrypting_failed">Encrypting failed!</string>
+    <string name="error_gen_key_failed">Failed to generate a new key!</string>
+    <string name="error_file_does_not_exist_format">\"%s\" does not exist!</string>
+    <string name="error_verify_failed">Verify Failed!</string>
+    <string name="error_file_verify_failed_format">\"%s\" failed to verify!</string>
+    <string name="error_no_pgp_content_found_format">No PGP content found in \"%s\"!</string>
+    <string name="error_fingerprint_too_short_format">The fingerprint %s is too short! It must be at least 16 digits.</string>
+    <string name="error_no_secret_key">There is no secret key! You need to generate or import one.</string>
+    <string name="error_insufficient_query">ERROR! Insufficient query. Try narrowing down your search</string>
+    <string name="error_too_many_responses">Too many responses! Try narrowing down your search</string>
+    <string name="error_query_failed">ERROR! Query failed, try again!</string>
+    <string name="error_short_keyserver_query">Keyserver searches must be at least 3 characters long!</string>
+    <string name="error_bad_or_corrupt_key_format">Bad or corrupt key (%s)!</string>
+    <string name="error_cm_privacy_guard">Gnu Privacy Guard does not work with CyanogenMod Privacy Guard enabled!</string>
+
+    <!-- content descriptions for accessibility -->
+    <string name="folder">folder</string>
+
+    <!-- key status terms -->
+    <string name="usable">usable</string>
+    <string name="disabled">disabled</string>
+    <string name="expired">expired</string>
+    <string name="invalid">invalid</string>
+    <string name="revoked">revoked</string>
+    <string name="noKey">&lt;no key&gt;</string>
+
+    <!-- permission info -->
+    <string name="perm_read_key_details_label">Read key details in the APG style</string>
+    <string name="perm_read_key_details_description">Read the 16 char key ID and associated email address via a ContentProvider in the style of APG.</string>
+
+    <!-- APG-related messages -->
+    <string name="error_activity_not_found">No suitable application for this action found.</string>
+
+    <!-- APG messages -->
+    <string name="unknownStatus"></string>
+    <string name="hint_publicKeys">Search Public Keys</string>
+    <string name="filterInfo_format">Filter: \"%s\"</string>
+    <string name="btn_clearFilter">Clear Filter</string>
+    <string name="title_select_recipients">Select Recipients</string>
+    <string name="progress_done">done.</string>
+    <string name="progress_initializing">Initializing…</string>
+    <string name="progress_saving">Saving…</string>
+    <string name="progress_importing">Importing…</string>
+    <string name="progress_exporting">Exporting…</string>
+    <string name="progress_querying">Querying…</string>
+
+</resources>

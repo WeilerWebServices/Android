@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/pref_start_boot"
+        android:summary="@string/pref_start_boot_summary"
+        android:title="@string/pref_start_boot_title" />
+
+    <EditTextPreference
+        android:defaultValue="ipv4.pool.sks-keyservers.net"
+        android:key="@string/pref_keyserver"
+        android:summary="@string/pref_keyserver_summary"
+        android:title="@string/pref_keyserver_title" />
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:enabled="false"
+        android:key="@string/pref_contacts_integration"
+        android:summary="@string/wizard_integration_msg"
+        android:title="@string/wizard_integration_checkbox_label" />
+
+</PreferenceScreen>

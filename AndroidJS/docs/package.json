@@ -1,0 +1,16 @@
+{
+  "name": "androidjs",
+  "version": "2.0.4",
+  "description": "",
+  "dependencies": {
+    "gitbook-plugin-variables": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "serve": "gitbook serve ./md ./docs/",
+    "build": "gitbook build ./ ./docs/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

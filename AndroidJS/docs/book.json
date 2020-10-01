@@ -1,0 +1,37 @@
+{
+  "title": "Android JS",
+  "author": "Pankaj Devesh <pankajdevesh3@gmail.com>",
+  "root": "./md",
+  "plugins": [ "variables", "related-links", "meta"],
+  "pluginsConfig": {
+    "meta": {
+      "data": [
+          {
+              "name": "description",
+              "content": "Android JS",
+              "extra": ""
+          },
+          {
+              "property": "og:title",
+              "content": "Android JS Docs"
+          },
+          {
+              "property": "og:description",
+              "content": "Android JS a framework for android app development througn Node JS"
+          },
+          {
+              "property": "og:image",
+              "content": "https://miro.medium.com/max/400/1*M3Sw2OSCIokYM1pkyPOWOQ.png"
+          },{
+              "property": "og:url",
+              "content": "/"
+          }
+      ]
+    },
+    "variables": {
+      "files": {
+      	"package": "../package.json"
+      }
+    }
+  }
+}
